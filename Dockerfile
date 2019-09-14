@@ -18,6 +18,8 @@ RUN dpkg --add-architecture i386 \
 
 RUN  apt-get install  Xvfb \
 		&& Xvfb :0 -screen 0 1024x768x16 &
+
+RUN useradd -ms /bin/bash wineclient
 		
 USER wineclient
 ENV HOME /home/wineclient
