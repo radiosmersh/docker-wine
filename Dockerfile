@@ -16,9 +16,13 @@ RUN dpkg --add-architecture i386 \
 				wine32 \
 		&& rm -rf /var/lib/apt/lists/*
 
+RUN  apt-get install  Xvfb \
+		&& Xvfb :0 -screen 0 1024x768x16 &
+		
 USER wineclient
 ENV HOME /home/wineclient
 ENV WINEPREFIX /home/wineclient/.wine
 ENV WINEARCH win32
+ENV DISPLAY  :0.0
 
 WORKDIR /home/wineclient
